@@ -1,0 +1,947 @@
+/* =========================================
+   RESET
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #080808;
+    color: #eeeeee;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
+}
+
+
+/* =========================================
+   INTRO PUNK
+========================================= */
+
+#intro {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background:
+        repeating-linear-gradient(
+            0deg,
+            #050505 0px,
+            #050505 2px,
+            #0d0d0d 3px,
+            #050505 4px
+        );
+
+    overflow: hidden;
+}
+
+#intro::before {
+    content: "";
+
+    position: absolute;
+    inset: -50%;
+
+    background:
+        radial-gradient(
+            circle,
+            transparent 20%,
+            rgba(255, 0, 50, .08) 21%,
+            transparent 22%
+        );
+
+    background-size: 15px 15px;
+
+    transform: rotate(-12deg);
+}
+
+.intro-content {
+    position: relative;
+    z-index: 2;
+
+    text-align: center;
+
+    transform: rotate(-2deg);
+}
+
+.intro-tag {
+    color: #ff1744;
+    font-size: 14px;
+    font-weight: 900;
+    letter-spacing: 5px;
+}
+
+.intro-content h1 {
+    margin: 10px 0;
+
+    font-size: clamp(100px, 25vw, 260px);
+    line-height: .75;
+
+    font-weight: 1000;
+
+    color: #f2f2f2;
+
+    text-shadow:
+        8px 8px 0 #ff1744,
+        -5px -5px 0 #222;
+
+    animation: punkShake .18s infinite;
+}
+
+.intro-content p {
+    margin: 30px 0;
+
+    color: #ff1744;
+
+    font-size: 18px;
+    font-weight: 900;
+
+    letter-spacing: 4px;
+}
+
+#entrar {
+    padding: 16px 35px;
+
+    border: 3px solid #eeeeee;
+
+    background: #ff1744;
+    color: white;
+
+    font-size: 18px;
+    font-weight: 900;
+
+    cursor: pointer;
+
+    transform: rotate(-2deg);
+
+    box-shadow: 7px 7px 0 #eeeeee;
+
+    transition: .15s;
+}
+
+#entrar:hover {
+    background: #eeeeee;
+    color: #080808;
+
+    transform:
+        rotate(2deg)
+        translate(-3px, -3px);
+
+    box-shadow: 10px 10px 0 #ff1744;
+}
+
+
+/* =========================================
+   SAÍDA DA INTRO
+========================================= */
+
+.punk-exit {
+    animation: punkExit .9s forwards;
+}
+
+@keyframes punkExit {
+
+    0% {
+        transform: translateX(0) rotate(0);
+        opacity: 1;
+    }
+
+    20% {
+        transform: translateX(-15px) rotate(-2deg);
+    }
+
+    40% {
+        transform: translateX(15px) rotate(2deg);
+    }
+
+    60% {
+        transform: translateX(-25px) rotate(-4deg);
+    }
+
+    100% {
+        transform:
+            translateX(100vw)
+            rotate(15deg);
+
+        opacity: 0;
+    }
+}
+
+@keyframes punkShake {
+
+    0% {
+        transform: translate(0, 0);
+    }
+
+    50% {
+        transform: translate(2px, -2px);
+    }
+
+    100% {
+        transform: translate(-2px, 2px);
+    }
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+header {
+    position: sticky;
+    top: 0;
+
+    z-index: 100;
+
+    background: rgba(5, 5, 5, .94);
+
+    border-bottom: 2px solid #ff1744;
+
+    backdrop-filter: blur(8px);
+}
+
+nav {
+    max-width: 1200px;
+
+    margin: auto;
+
+    padding: 18px 25px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    font-size: 30px;
+    font-weight: 1000;
+
+    color: white;
+
+    text-shadow:
+        3px 3px 0 #ff1744;
+}
+
+.logo span {
+    color: #ff1744;
+}
+
+nav ul {
+    display: flex;
+
+    gap: 20px;
+
+    list-style: none;
+
+    flex-wrap: wrap;
+}
+
+nav a {
+    color: #eee;
+
+    text-decoration: none;
+
+    font-size: 13px;
+    font-weight: 900;
+
+    letter-spacing: 1px;
+
+    transition: .2s;
+}
+
+nav a:hover {
+    color: #ff1744;
+
+    text-decoration: line-through;
+}
+
+
+/* =========================================
+   FUNDO
+========================================= */
+
+.musical-background {
+    position: fixed;
+    inset: 0;
+
+    z-index: -1;
+
+    overflow: hidden;
+
+    pointer-events: none;
+}
+
+.skate {
+    position: absolute;
+
+    font-size: 45px;
+
+    filter:
+        drop-shadow(4px 4px 0 #ff1744);
+}
+
+
+/* =========================================
+   SKATES SALTANDO
+========================================= */
+
+.skate-1 {
+    left: -100px;
+    top: 15%;
+
+    animation:
+        skateJump1 7s linear infinite;
+}
+
+.skate-2 {
+    left: -150px;
+    top: 45%;
+
+    animation:
+        skateJump2 10s linear infinite 2s;
+}
+
+.skate-3 {
+    left: -200px;
+    top: 70%;
+
+    animation:
+        skateJump3 8s linear infinite 4s;
+}
+
+.skate-4 {
+    left: -120px;
+    top: 85%;
+
+    animation:
+        skateJump4 12s linear infinite 1s;
+}
+
+
+@keyframes skateJump1 {
+
+    0% {
+        transform:
+            translateX(-100px)
+            translateY(0)
+            rotate(-15deg);
+    }
+
+    15% {
+        transform:
+            translateX(20vw)
+            translateY(-100px)
+            rotate(180deg);
+    }
+
+    30% {
+        transform:
+            translateX(40vw)
+            translateY(0)
+            rotate(360deg);
+    }
+
+    45% {
+        transform:
+            translateX(60vw)
+            translateY(-140px)
+            rotate(540deg);
+    }
+
+    60% {
+        transform:
+            translateX(80vw)
+            translateY(0)
+            rotate(720deg);
+    }
+
+    75% {
+        transform:
+            translateX(100vw)
+            translateY(-100px)
+            rotate(900deg);
+    }
+
+    100% {
+        transform:
+            translateX(120vw)
+            translateY(0)
+            rotate(1080deg);
+    }
+}
+
+
+@keyframes skateJump2 {
+
+    0% {
+        transform:
+            translate(-150px, 0)
+            rotate(0);
+    }
+
+    20% {
+        transform:
+            translate(20vw, -160px)
+            rotate(-270deg);
+    }
+
+    40% {
+        transform:
+            translate(45vw, 0)
+            rotate(-540deg);
+    }
+
+    60% {
+        transform:
+            translate(70vw, -130px)
+            rotate(-810deg);
+    }
+
+    80% {
+        transform:
+            translate(95vw, 0)
+            rotate(-1080deg);
+    }
+
+    100% {
+        transform:
+            translate(120vw, -100px)
+            rotate(-1440deg);
+    }
+}
+
+
+@keyframes skateJump3 {
+
+    0% {
+        transform:
+            translateX(-200px)
+            translateY(0)
+            rotate(0);
+    }
+
+    25% {
+        transform:
+            translateX(25vw)
+            translateY(-180px)
+            rotate(360deg);
+    }
+
+    50% {
+        transform:
+            translateX(55vw)
+            translateY(0)
+            rotate(720deg);
+    }
+
+    75% {
+        transform:
+            translateX(85vw)
+            translateY(-150px)
+            rotate(1080deg);
+    }
+
+    100% {
+        transform:
+            translateX(120vw)
+            translateY(0)
+            rotate(1440deg);
+    }
+}
+
+
+@keyframes skateJump4 {
+
+    0% {
+        transform:
+            translate(-120px, 0)
+            rotate(0);
+    }
+
+    30% {
+        transform:
+            translate(30vw, -120px)
+            rotate(450deg);
+    }
+
+    60% {
+        transform:
+            translate(65vw, 0)
+            rotate(900deg);
+    }
+
+    80% {
+        transform:
+            translate(90vw, -180px)
+            rotate(1200deg);
+    }
+
+    100% {
+        transform:
+            translate(120vw, 0)
+            rotate(1600deg);
+    }
+}
+
+
+/* =========================================
+   NOTAS MUSICAIS
+========================================= */
+
+.nota {
+    position: absolute;
+
+    color: #ff1744;
+
+    font-size: 30px;
+
+    opacity: .25;
+
+    animation: notaFloat 5s infinite ease-in-out;
+}
+
+.nota-1 {
+    left: 10%;
+    top: 20%;
+}
+
+.nota-2 {
+    left: 80%;
+    top: 30%;
+
+    animation-delay: 1s;
+}
+
+.nota-3 {
+    left: 30%;
+    top: 70%;
+
+    animation-delay: 2s;
+}
+
+.nota-4 {
+    left: 70%;
+    top: 80%;
+
+    animation-delay: 3s;
+}
+
+.nota-5 {
+    left: 50%;
+    top: 40%;
+
+    animation-delay: 1.5s;
+}
+
+@keyframes notaFloat {
+
+    0%, 100% {
+        transform:
+            translateY(0)
+            rotate(0);
+    }
+
+    50% {
+        transform:
+            translateY(-30px)
+            rotate(15deg);
+    }
+}
+
+
+/* =========================================
+   SEÇÕES
+========================================= */
+
+main {
+    max-width: 1100px;
+
+    margin: auto;
+
+    padding: 50px 25px;
+}
+
+section {
+    min-height: 80vh;
+
+    padding: 100px 0;
+
+    border-bottom: 1px solid #222;
+}
+
+.section-tag {
+    display: block;
+
+    margin-bottom: 20px;
+
+    color: #ff1744;
+
+    font-size: 13px;
+
+    font-weight: 900;
+
+    letter-spacing: 4px;
+}
+
+section h2 {
+    margin-bottom: 35px;
+
+    font-size: clamp(45px, 8vw, 90px);
+
+    line-height: .9;
+
+    text-transform: uppercase;
+
+    text-shadow:
+        4px 4px 0 #ff1744;
+}
+
+section p {
+    max-width: 850px;
+
+    margin-bottom: 25px;
+
+    color: #cfcfcf;
+
+    font-size: 17px;
+
+    line-height: 1.8;
+}
+
+strong {
+    color: #ff1744;
+}
+
+
+/* =========================================
+   HABILIDADES
+========================================= */
+
+.skills-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 15px;
+
+    margin-top: 50px;
+}
+
+.skill {
+    min-height: 220px;
+
+    padding: 25px;
+
+    background: #101010;
+
+    border: 2px solid #292929;
+
+    transition: .25s;
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+.skill:hover {
+    border-color: #ff1744;
+
+    transform:
+        translateY(-8px)
+        rotate(-1deg);
+
+    background: #151515;
+}
+
+.skill span {
+    color: #ff1744;
+
+    font-size: 13px;
+
+    font-weight: 900;
+}
+
+.skill h3 {
+    margin: 30px 0 15px;
+
+    font-size: 25px;
+
+    text-transform: uppercase;
+}
+
+.skill p {
+    font-size: 14px;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================
+   PROJETOS
+========================================= */
+
+.project {
+    position: relative;
+
+    margin: 30px 0;
+
+    padding: 35px;
+
+    border-left: 5px solid #ff1744;
+
+    background: #0d0d0d;
+
+    transition: .2s;
+}
+
+.project:hover {
+    transform: translateX(10px);
+
+    background: #141414;
+}
+
+.project-number {
+    color: #ff1744;
+
+    font-weight: 900;
+}
+
+.project h3 {
+    margin: 10px 0 20px;
+
+    font-size: 35px;
+
+    text-transform: uppercase;
+}
+
+
+/* =========================================
+   CURRÍCULO
+========================================= */
+
+.curriculo-box {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 40px;
+
+    padding: 50px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #151515,
+            #090909
+        );
+
+    border: 2px solid #ff1744;
+
+    box-shadow:
+        10px 10px 0 #ff1744;
+}
+
+.curriculo-label {
+    color: #ff1744;
+
+    font-size: 12px;
+
+    font-weight: 900;
+
+    letter-spacing: 3px;
+}
+
+.curriculo-box h2 {
+    margin-top: 15px;
+}
+
+
+/* =========================================
+   BOTÕES PUNK
+========================================= */
+
+.botao-punk {
+    display: inline-block;
+
+    padding: 17px 28px;
+
+    border: 2px solid white;
+
+    background: #ff1744;
+
+    color: white;
+
+    text-decoration: none;
+
+    font-weight: 900;
+
+    cursor: pointer;
+
+    transition: .15s;
+
+    box-shadow:
+        6px 6px 0 white;
+}
+
+.botao-punk:hover {
+    background: white;
+
+    color: black;
+
+    transform:
+        translate(4px, 4px);
+
+    box-shadow:
+        2px 2px 0 #ff1744;
+}
+
+
+/* =========================================
+   CONTATO
+========================================= */
+
+.contato-intro {
+    font-size: 20px;
+}
+
+form {
+    max-width: 800px;
+
+    margin-top: 50px;
+}
+
+.campo {
+    margin-bottom: 25px;
+}
+
+.campo label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: #ff1744;
+
+    font-size: 13px;
+
+    font-weight: 900;
+
+    letter-spacing: 2px;
+}
+
+.campo input,
+.campo textarea {
+    width: 100%;
+
+    padding: 18px;
+
+    background: #0e0e0e;
+
+    color: white;
+
+    border: 2px solid #292929;
+
+    outline: none;
+
+    font-size: 16px;
+
+    transition: .2s;
+}
+
+.campo textarea {
+    min-height: 180px;
+
+    resize: vertical;
+}
+
+.campo input:focus,
+.campo textarea:focus {
+    border-color: #ff1744;
+
+    box-shadow:
+        5px 5px 0 #ff1744;
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+footer {
+    padding: 50px 25px;
+
+    text-align: center;
+
+    border-top: 2px solid #ff1744;
+
+    background: #050505;
+}
+
+footer p {
+    color: #aaa;
+}
+
+footer span {
+    display: block;
+
+    margin-top: 10px;
+
+    color: #ff1744;
+
+    font-size: 11px;
+
+    letter-spacing: 3px;
+}
+
+
+/* =========================================
+   RESPONSIVO
+========================================= */
+
+@media (max-width: 800px) {
+
+    nav {
+        flex-direction: column;
+
+        gap: 20px;
+    }
+
+    nav ul {
+        justify-content: center;
+
+        gap: 12px;
+    }
+
+    .skills-grid {
+        grid-template-columns:
+            1fr;
+    }
+
+    .curriculo-box {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        box-shadow:
+            6px 6px 0 #ff1744;
+    }
+
+    section {
+        padding: 70px 0;
+    }
+
+    .intro-content h1 {
+        font-size: 120px;
+    }
+
+}
